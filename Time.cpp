@@ -2,19 +2,29 @@
 //
 
 #include <iostream>
+#include <time.h>
 
 int main()
 {
-    const int N = 2;
-    int array [N][N] = {{0,1},{2,3}};
-    for (int i = 0; i < N; i++)
+    struct tm buf;
+    time_t t = time(NULL);
+    localtime_s(&t, &buf);
+    int sum = 0;
+    const int size = 5;
+    int array[size][size];
+    int NumR = buf.tm_mday % size;
+    for (int i = 0; i < size; i++)
     {
-        for (int j = 0; j < N; j++)
+        for (int j = 0; j < size; j++)
         {
-            std::cout << array[i][j];
+            array[i][j] = i + j;
+            std::cout << " " << array[i][j] << " ";
         }
         std::cout << "\n";
     }
+    std::cout << "Day:" << buf.tm_mday << " ";
+    std::cout << "Index:" << NumR << " ";
+    std::cout << "Sum:" << sum << " ";
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
