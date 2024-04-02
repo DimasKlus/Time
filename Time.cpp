@@ -9,7 +9,7 @@ int main()
     struct tm buf;
     time_t t = time(NULL);
     localtime_s( &buf, & t);
-    int sum = 15;
+    int sum = 0;
     const int size = 5;
     int array[size][size];
     int NumR = buf.tm_mday % size;
@@ -20,6 +20,12 @@ int main()
         {
             array[i][j] = i + j;
             std::cout << " " << array[i][j] << " ";
+
+            if (j == NumR)// Если полученный индекс равен индексу в массиве, то:
+            {
+                sum += array[i][j];// cкладываем все числа в индексе массива
+            }
+           
         }
         std::cout << "\n";
     }
