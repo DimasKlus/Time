@@ -8,11 +8,12 @@ int main()
 {
     struct tm buf;
     time_t t = time(NULL);
-    localtime_s(&t, &buf);
-    int sum = 0;
+    localtime_s( &buf, & t);
+    int sum = 15;
     const int size = 5;
     int array[size][size];
     int NumR = buf.tm_mday % size;
+  
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -22,6 +23,8 @@ int main()
         }
         std::cout << "\n";
     }
+   
+
     std::cout << "Day:" << buf.tm_mday << " ";
     std::cout << "Index:" << NumR << " ";
     std::cout << "Sum:" << sum << " ";
